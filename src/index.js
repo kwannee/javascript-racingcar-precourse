@@ -39,6 +39,7 @@ function RacingGame() {
     }
     startRacingGame(racingCount);
     renderRacingResults();
+    const winner = getRacingWinner();
   };
 
   const startRacingGame = (racingCount) => {
@@ -60,6 +61,7 @@ function RacingGame() {
       })
       .join('');
   };
+
   const renderRacingResults = () => {
     const resultTemplate = this.results
       .map((result) => {
@@ -68,6 +70,15 @@ function RacingGame() {
       .join('<br/>');
     const racingResultDiv = createElementWithTemplate('div', resultTemplate);
     $('#app').appendChild(racingResultDiv);
+  };
+
+  const getRacingWinner = () => {
+    const maxCountNumber = Math.max(
+      ...this.cars.map((car) => car.forwardCount),
+    );
+    return this.cars
+      .filter((car) => car.forwardCount === maxCountNumber)
+      .map((car) => car.name);
   };
 
   const initEventHandler = () => {
