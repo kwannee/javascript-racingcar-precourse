@@ -1,3 +1,4 @@
+import { $ } from './dom.js';
 import { carNamesInputID, racingCountInputID } from '../constant/index.js';
 import { MAX_CAR_NAME_LENGTH } from '../constant/index.js';
 import { clearInput } from './dom.js';
@@ -9,7 +10,7 @@ export const checkValidRacingCount = (racingCount) => {
   }
   return true;
 };
-export const checkCarNamesExist = (cars) => {
+export const checkCarsExist = (cars) => {
   if (!cars.length) {
     alert('자동차 이름을 입력하고 확인 버튼을 눌러주세요.');
     $(carNamesInputID).focus();
