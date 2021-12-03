@@ -1,5 +1,5 @@
 import Car from './Car.js';
-import { $, getElementValue } from './utils/dom.js';
+import { $, getElementValue, createElementWithTemplate } from './utils/dom.js';
 import {
   carNamesFormID,
   carNamesSubmitID,
@@ -16,6 +16,7 @@ import {
 
 function RacingGame() {
   this.cars = [];
+  this.results = [];
   this.init = () => {
     initEventHandler();
   };
@@ -42,12 +43,21 @@ function RacingGame() {
   const startRacingGame = (racingCount) => {
     for (let i = 0; i < racingCount; i += 1) {
       raceAllCars();
+      const thisRaceResult = makeRaceResultTemplate();
+      this.results.push(thisRaceResult);
     }
   };
   const raceAllCars = () => {
     for (const car of this.cars) {
       car.race();
     }
+  };
+  const makeRaceResultTemplate = () => {
+    return this.cars
+      .map((car) => {
+        return `<div>${car.name}: ${'-'.repeat(car.forwardCount)}</div>`;
+      })
+      .join('');
   };
 
   const initEventHandler = () => {
