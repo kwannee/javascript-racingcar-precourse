@@ -13,8 +13,16 @@ function RacingGame() {
       return;
     }
     const racingCount = getRacingCount();
+    if (!isValidCountInput(racingCount)) {
+      alert('시도할 횟수 입력이 올바르지 않습니다.');
+      $('#racing-count-input').focus();
+      $('#racing-count-input').value = '';
+      return;
+    }
   };
   const getRacingCount = () => $('#racing-count-input').value;
+  const isValidCountInput = (racingCount) => racingCount > 0;
+
   const setCarNames = () => {
     const carNamesArray = getCarNames().split(',');
     if (!isValidCarNames(carNamesArray)) {
