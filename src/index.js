@@ -1,5 +1,5 @@
 import Car from './Car.js';
-import { $, getElementValue, createElementWithTemplate } from './utils/dom.js';
+import { $, getElementValue } from './utils/dom.js';
 import {
   carNamesFormID,
   carNamesSubmitID,
@@ -11,8 +11,14 @@ import {
 import {
   checkValidCarNames,
   checkValidRacingCount,
-  checkCarNamesExist,
+  checkCarsExist,
 } from './utils/valid.js';
+import { raceAllCars, getRacingWinner } from './racing.js';
+import {
+  createRacingResultsElement,
+  createRacingWinnersElement,
+  makeRaceResultTemplate,
+} from './render.js';
 
 function RacingGame() {
   this.cars = [];
@@ -30,7 +36,7 @@ function RacingGame() {
   };
 
   const submitRacingCount = () => {
-    if (!checkCarNamesExist(this.cars)) {
+    if (!checkCarsExist(this.cars)) {
       return;
     }
     const racingCount = getElementValue(racingCountInputID);
@@ -38,54 +44,23 @@ function RacingGame() {
       return;
     }
     startRacingGame(racingCount);
-    renderRacingResults();
-    const winners = getRacingWinner();
-    renderRacingWinners(winners);
   };
 
   const startRacingGame = (racingCount) => {
     for (let i = 0; i < racingCount; i += 1) {
-      raceAllCars();
-      const thisRaceResult = makeRaceResultTemplate();
-      this.results.push(thisRaceResult);
+      const thisRaceResult = raceAllCars(this.cars);
+      const thisRaceResultTemplate = makeRaceResultTemplate(thisRaceResult);
+      this.results.push(thisRaceResultTemplate);
     }
-  };
-  const raceAllCars = () => {
-    for (const car of this.cars) {
-      car.race();
-    }
-  };
-  const makeRaceResultTemplate = () => {
-    return this.cars
-      .map((car) => {
-        return `<div>${car.name}: ${'-'.repeat(car.forwardCount)}</div>`;
-      })
-      .join('');
+    renderRacingResults();
   };
 
   const renderRacingResults = () => {
-    const resultTemplate = this.results
-      .map((result) => {
-        return `<div>${result}</div>`;
-      })
-      .join('<br/>');
-    const racingResultDiv = createElementWithTemplate('div', resultTemplate);
-    $('#app').appendChild(racingResultDiv);
-  };
-  const renderRacingWinners = (winners) => {
-    const winnerTemplate = `최종 우승자: 
-    <span id="racing-winners">${winners.join(',')}</span>`;
-    const racingWinnerSpan = createElementWithTemplate('span', winnerTemplate);
-    $('#app').appendChild(racingWinnerSpan);
-  };
-
-  const getRacingWinner = () => {
-    const maxCountNumber = Math.max(
-      ...this.cars.map((car) => car.forwardCount),
-    );
-    return this.cars
-      .filter((car) => car.forwardCount === maxCountNumber)
-      .map((car) => car.name);
+    const racingResultsElement = createRacingResultsElement(this.results);
+    $('#app').appendChild(racingResultsElement);
+    const winners = getRacingWinner(this.cars);
+    const racingWinnersElement = createRacingWinnersElement(winners);
+    $('#app').appendChild(racingWinnersElement);
   };
 
   const initEventHandler = () => {
