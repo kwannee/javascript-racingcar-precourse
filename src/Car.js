@@ -1,4 +1,4 @@
-import { MIN_NUMBER, MAX_NUMBER } from './constant';
+import { MIN_NUMBER, MAX_NUMBER, FORWARD_NUMBER } from './constant/index.js';
 export default function Car(name) {
   this.name = name;
   this.forwardCount = 0;
@@ -7,6 +7,6 @@ export default function Car(name) {
       MIN_NUMBER,
       MAX_NUMBER,
     );
-    this.forwardCount += randomNumber >= 4;
+    this.forwardCount += randomNumber >= FORWARD_NUMBER;
   };
 }

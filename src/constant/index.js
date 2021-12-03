@@ -1,2 +1,10 @@
 export const MIN_NUMBER = 1;
 export const MAX_NUMBER = 9;
+export const FORWARD_NUMBER = 4;
+export const carNamesInputID = '#car-names-input';
+export const carNamesSubmitID = '#car-names-submit';
+export const racingCountInputID = '#racing-count-input';
+export const raacingCountSubmitID = '#racing-count-submit';
+export const carNamesFormID = '#car-names-form';
+export const racingCountFormID = '#racing-count-form';
+export const MAX_CAR_NAME_LENGTH = 5;
