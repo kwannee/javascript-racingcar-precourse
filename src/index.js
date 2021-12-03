@@ -11,8 +11,9 @@ function RacingGame() {
       alert('자동차 이름은 5글자 이하로 입력해 주세요.');
       $('#car-names-input').value = '';
       $('#car-names-input').focus();
+      return;
     }
-    this.cars = carNamesArray;
+    this.cars = carNamesArray.map((carName) => new Car(carName));
   };
   const isValidCarNames = (carNamesArray) =>
     carNamesArray.every((carName) => carName.length <= 5);
