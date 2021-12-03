@@ -1,3 +1,4 @@
+import { carNamesInputID, racingCountInputID } from '../constant/index.js';
 import { MAX_CAR_NAME_LENGTH } from '../constant/index.js';
 import { clearInput } from './dom.js';
 export const checkValidRacingCount = (racingCount) => {
