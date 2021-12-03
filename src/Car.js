@@ -1,5 +1,4 @@
-const MIN_NUMBER = 1;
-const MAX_NUMBER = 9;
+import { MIN_NUMBER, MAX_NUMBER } from './constant';
 export default function Car(name) {
   this.name = name;
   this.forwardCount = 0;
