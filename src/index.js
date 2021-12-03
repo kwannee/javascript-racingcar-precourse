@@ -39,7 +39,8 @@ function RacingGame() {
     }
     startRacingGame(racingCount);
     renderRacingResults();
-    const winner = getRacingWinner();
+    const winners = getRacingWinner();
+    renderRacingWinners(winners);
   };
 
   const startRacingGame = (racingCount) => {
@@ -70,6 +71,12 @@ function RacingGame() {
       .join('<br/>');
     const racingResultDiv = createElementWithTemplate('div', resultTemplate);
     $('#app').appendChild(racingResultDiv);
+  };
+  const renderRacingWinners = (winners) => {
+    const winnerTemplate = `최종 우승자: 
+    <span id="racing-winners">${winners.join(',')}</span>`;
+    const racingWinnerSpan = createElementWithTemplate('span', winnerTemplate);
+    $('#app').appendChild(racingWinnerSpan);
   };
 
   const getRacingWinner = () => {
