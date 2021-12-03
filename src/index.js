@@ -6,7 +6,7 @@ import {
   carNamesInputID,
   racingCountFormID,
   racingCountInputID,
-  raacingCountSubmitID,
+  racingCountSubmitID,
 } from './constant/index.js';
 import {
   checkValidCarNames,
@@ -38,6 +38,7 @@ function RacingGame() {
       return;
     }
     startRacingGame(racingCount);
+    renderRacingResults();
   };
 
   const startRacingGame = (racingCount) => {
@@ -59,12 +60,21 @@ function RacingGame() {
       })
       .join('');
   };
+  const renderRacingResults = () => {
+    const resultTemplate = this.results
+      .map((result) => {
+        return `<div>${result}</div>`;
+      })
+      .join('<br/>');
+    const racingResultDiv = createElementWithTemplate('div', resultTemplate);
+    $('#app').appendChild(racingResultDiv);
+  };
 
   const initEventHandler = () => {
     $(carNamesFormID).addEventListener('submit', (e) => e.preventDefault());
     $(racingCountFormID).addEventListener('submit', (e) => e.preventDefault());
     $(carNamesSubmitID).addEventListener('click', setCarNames);
-    $(raacingCountSubmitID).addEventListener('click', submitRacingCount);
+    $(racingCountSubmitID).addEventListener('click', submitRacingCount);
   };
 }
 const racingGame = new RacingGame();
