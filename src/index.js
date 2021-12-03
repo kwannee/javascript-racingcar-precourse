@@ -5,6 +5,11 @@ function RacingGame() {
   this.init = () => {
     initEventHandler();
   };
+
+  const startRacingGame = () => {
+    const racingCount = getRacingCount();
+  };
+  const getRacingCount = () => $('#racing-count-input').value;
   const setCarNames = () => {
     const carNamesArray = getCarNames().split(',');
     if (!isValidCarNames(carNamesArray)) {
@@ -25,6 +30,7 @@ function RacingGame() {
       e.preventDefault(),
     );
     $('#car-names-submit').addEventListener('click', setCarNames);
+    $('#racing-count-submit').addEventListener('click', startRacingGame);
   };
 }
 const racingGame = new RacingGame();
