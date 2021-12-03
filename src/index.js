@@ -28,13 +28,25 @@ function RacingGame() {
     this.cars = carNamesArray.map((carName) => new Car(carName));
   };
 
-  const startRacingGame = () => {
-    if (!checkCarNamesExist()) {
+  const submitRacingCount = () => {
+    if (!checkCarNamesExist(this.cars)) {
       return;
     }
     const racingCount = getElementValue(racingCountInputID);
     if (!checkValidRacingCount(racingCount)) {
       return;
+    }
+    startRacingGame(racingCount);
+  };
+
+  const startRacingGame = (racingCount) => {
+    for (let i = 0; i < racingCount; i += 1) {
+      raceAllCars();
+    }
+  };
+  const raceAllCars = () => {
+    for (const car of this.cars) {
+      car.race();
     }
   };
 
@@ -42,7 +54,7 @@ function RacingGame() {
     $(carNamesFormID).addEventListener('submit', (e) => e.preventDefault());
     $(racingCountFormID).addEventListener('submit', (e) => e.preventDefault());
     $(carNamesSubmitID).addEventListener('click', setCarNames);
-    $(raacingCountSubmitID).addEventListener('click', startRacingGame);
+    $(raacingCountSubmitID).addEventListener('click', submitRacingCount);
   };
 }
 const racingGame = new RacingGame();

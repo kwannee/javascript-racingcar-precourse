@@ -8,8 +8,8 @@ export const checkValidRacingCount = (racingCount) => {
   }
   return true;
 };
-export const checkCarNamesExist = () => {
-  if (!this.cars.length) {
+export const checkCarNamesExist = (cars) => {
+  if (!cars.length) {
     alert('자동차 이름을 입력하고 확인 버튼을 눌러주세요.');
     $(carNamesInputID).focus();
     return false;
