@@ -4,3 +4,8 @@ export const clearInput = (selector) => {
   $(selector).value = '';
   $(selector).focus();
 };
+export const createElementWithTemplate = (element = 'div', template) => {
+  const el = document.createElement(element);
+  el.innerHTML = template;
+  return el;
+};
