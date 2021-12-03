@@ -7,6 +7,11 @@ function RacingGame() {
   };
 
   const startRacingGame = () => {
+    if (!this.cars.length) {
+      alert('자동차 이름을 입력하고 확인 버튼을 눌러주세요.');
+      $('#car-names-input').focus();
+      return;
+    }
     const racingCount = getRacingCount();
   };
   const getRacingCount = () => $('#racing-count-input').value;
