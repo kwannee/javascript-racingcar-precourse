@@ -1,13 +1,6 @@
 import Car from './Car.js';
-import { $, getElementValue } from './utils/dom.js';
-import {
-  carNamesFormID,
-  carNamesSubmitID,
-  carNamesInputID,
-  racingCountFormID,
-  racingCountInputID,
-  racingCountSubmitID,
-} from './constant/index.js';
+import { $, getElementValue, formsPreventDefault } from './utils/dom.js';
+import { ELEMENT } from './constant/index.js';
 import {
   checkValidCarNames,
   checkValidRacingCount,
@@ -28,7 +21,7 @@ function RacingGame() {
   };
 
   const setCarNames = () => {
-    const carNamesArray = getElementValue(carNamesInputID).split(',');
+    const carNamesArray = getElementValue(ELEMENT.carNamesInputID).split(',');
     if (!checkValidCarNames(carNamesArray)) {
       return;
     }
@@ -39,7 +32,7 @@ function RacingGame() {
     if (!checkCarsExist(this.cars)) {
       return;
     }
-    const racingCount = getElementValue(racingCountInputID);
+    const racingCount = getElementValue(ELEMENT.racingCountInputID);
     if (!checkValidRacingCount(racingCount)) {
       return;
     }
@@ -64,10 +57,9 @@ function RacingGame() {
   };
 
   const initEventHandler = () => {
-    $(carNamesFormID).addEventListener('submit', (e) => e.preventDefault());
-    $(racingCountFormID).addEventListener('submit', (e) => e.preventDefault());
-    $(carNamesSubmitID).addEventListener('click', setCarNames);
-    $(racingCountSubmitID).addEventListener('click', submitRacingCount);
+    formsPreventDefault();
+    $(ELEMENT.carNamesSubmitID).addEventListener('click', setCarNames);
+    $(ELEMENT.racingCountSubmitID).addEventListener('click', submitRacingCount);
   };
 }
 const racingGame = new RacingGame();

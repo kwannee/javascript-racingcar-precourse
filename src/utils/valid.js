@@ -1,10 +1,10 @@
 import { $ } from './dom.js';
-import { carNamesInputID, racingCountInputID } from '../constant/index.js';
+import { ELEMENT, ALERT_MESSAGE } from '../constant/index.js';
 import { MAX_CAR_NAME_LENGTH } from '../constant/index.js';
 import { clearInput } from './dom.js';
 export const checkValidRacingCount = (racingCount) => {
   if (!isPositiveNumber(racingCount)) {
-    alert('시도할 횟수 입력이 올바르지 않습니다.');
+    alert(ALERT_MESSAGE.WRONG_COUNT_NUMBER);
     clearInput(racingCountInputID);
     return false;
   }
@@ -12,16 +12,16 @@ export const checkValidRacingCount = (racingCount) => {
 };
 export const checkCarsExist = (cars) => {
   if (!cars.length) {
-    alert('자동차 이름을 입력하고 확인 버튼을 눌러주세요.');
-    $(carNamesInputID).focus();
+    alert(ALERT_MESSAGE.CAR_NOT_EXIT);
+    $(ELEMENT.carNamesInputID).focus();
     return false;
   }
   return true;
 };
 export const checkValidCarNames = (carNamesArray) => {
   if (!isValidCarNamesLength(carNamesArray)) {
-    alert('자동차 이름은 5글자 이하로 입력해 주세요.');
-    clearInput(carNamesInputID);
+    alert(ALERT_MESSAGE.WRONG_CAR_NAME_LENGTH);
+    clearInput(ELEMENT.carNamesInputID);
     return false;
   }
   return true;

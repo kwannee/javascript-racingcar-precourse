@@ -9,3 +9,10 @@ export const createElementWithTemplate = (element = 'div', template) => {
   el.innerHTML = template;
   return el;
 };
+export const formsPreventDefault = () => {
+  document
+    .querySelectorAll('form')
+    .forEach((form) =>
+      form.addEventListener('submit', (e) => e.preventDefault()),
+    );
+};
