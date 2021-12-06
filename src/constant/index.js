@@ -6,6 +6,7 @@ export const ELEMENT = {
   carNamesSubmitID: '#car-names-submit',
   racingCountInputID: '#racing-count-input',
   racingCountSubmitID: '#racing-count-submit',
+  appID: '#app',
 };
 export const ALERT_MESSAGE = {
   WRONG_COUNT_NUMBER: '시도할 횟수 입력이 올바르지 않습니다.',
