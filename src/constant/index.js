@@ -6,11 +6,11 @@ export const NUMBER_RULE = Object.freeze({
 });
 
 export const ELEMENT_ID = Object.freeze({
-  carNamesInputID: '#car-names-input',
-  carNamesSubmitID: '#car-names-submit',
-  racingCountInputID: '#racing-count-input',
-  racingCountSubmitID: '#racing-count-submit',
-  appID: '#app',
+  carNamesInput: '#car-names-input',
+  carNamesSubmit: '#car-names-submit',
+  racingCountInput: '#racing-count-input',
+  racingCountSubmit: '#racing-count-submit',
+  app: '#app',
 });
 export const ALERT_MESSAGE = Object.freeze({
   WRONG_COUNT_NUMBER: '시도할 횟수 입력이 올바르지 않습니다.',
