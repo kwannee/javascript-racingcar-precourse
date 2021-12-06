@@ -1,7 +1,7 @@
 import Car from './Car.js';
 import { $, getElementValue, formsPreventDefault } from './utils/dom.js';
 import { ELEMENT } from './constant/index.js';
-import { VALID } from './utils/valid.js';
+import { VALID } from './validation/valid.js';
 import { raceAllCars, getRacingWinner } from './racing.js';
 import {
   createRacingResultsElement,

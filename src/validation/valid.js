@@ -1,7 +1,7 @@
-import { $ } from './dom.js';
+import { $ } from '../utils/dom.js';
 import { ELEMENT, ALERT_MESSAGE } from '../constant/index.js';
 import { MAX_CAR_NAME_LENGTH } from '../constant/index.js';
-import { clearInput } from './dom.js';
+import { clearInput } from '../utils/dom.js';
 export const VALID = {
   checkValidRacingCount(racingCount) {
     if (!isPositiveNumber(racingCount)) {
