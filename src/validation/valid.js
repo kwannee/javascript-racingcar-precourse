@@ -6,7 +6,7 @@ export const VALID = {
   checkValidRacingCount(racingCount) {
     if (!isPositiveNumber(racingCount)) {
       alert(ALERT_MESSAGE.WRONG_COUNT_NUMBER);
-      clearInput(racingCountInputID);
+      clearInput(ELEMENT_ID.racingCountInput);
       return false;
     }
     return true;
@@ -14,7 +14,7 @@ export const VALID = {
   checkCarsExist(cars) {
     if (!cars.length) {
       alert(ALERT_MESSAGE.CAR_NOT_EXIT);
-      $(ELEMENT_ID.carNamesInputID).focus();
+      $(ELEMENT_ID.carNamesInput).focus();
       return false;
     }
     return true;
@@ -22,7 +22,7 @@ export const VALID = {
   checkValidCarNames(carNamesArray) {
     if (!isValidCarNamesLength(carNamesArray)) {
       alert(ALERT_MESSAGE.WRONG_CAR_NAME_LENGTH);
-      clearInput(ELEMENT_ID.carNamesInputID);
+      clearInput(ELEMENT_ID.carNamesInput);
       return false;
     }
     return true;

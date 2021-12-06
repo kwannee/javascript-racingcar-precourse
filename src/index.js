@@ -17,9 +17,7 @@ function RacingGame() {
   };
 
   const setCarNames = () => {
-    const carNamesArray = getElementValue(ELEMENT_ID.carNamesInputID).split(
-      ',',
-    );
+    const carNamesArray = getElementValue(ELEMENT_ID.carNamesInput).split(',');
     if (!VALID.checkValidCarNames(carNamesArray)) {
       return;
     }
@@ -30,7 +28,7 @@ function RacingGame() {
     if (!VALID.checkCarsExist(this.cars)) {
       return;
     }
-    const racingCount = getElementValue(ELEMENT_ID.racingCountInputID);
+    const racingCount = getElementValue(ELEMENT_ID.racingCountInput);
     if (!VALID.checkValidRacingCount(racingCount)) {
       return;
     }
@@ -56,8 +54,8 @@ function RacingGame() {
 
   const initEventHandler = () => {
     formsPreventDefault();
-    $(ELEMENT_ID.carNamesSubmitID).addEventListener('click', setCarNames);
-    $(ELEMENT_ID.racingCountSubmitID).addEventListener(
+    $(ELEMENT_ID.carNamesSubmit).addEventListener('click', setCarNames);
+    $(ELEMENT_ID.racingCountSubmit).addEventListener(
       'click',
       submitRacingCount,
     );
