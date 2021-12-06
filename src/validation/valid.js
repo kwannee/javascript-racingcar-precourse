@@ -6,7 +6,11 @@ export const VALID = {
   checkValidRacingCount(racingCount) {
     if (!isPositiveNumber(racingCount)) {
       alert(ALERT_MESSAGE.WRONG_COUNT_NUMBER);
+<<<<<<< HEAD
       clearInput(racingCountInput);
+=======
+      clearInput(ELEMENT_ID.racingCountInput);
+>>>>>>> 1f37b519d8d1706d976d52bc9a900ec7e465207b
       return false;
     }
     return true;
