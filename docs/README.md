@@ -19,6 +19,8 @@
 - [x] 레이싱이 끝나면 최종 우승자를 찾는다.
 - [x] 최종 우승자를 <span id="racing-winners">에 담아서 출력한다.
 
+```
+.
 src
 ┣ controllers
 ┃ ┗ MainController.js
@@ -35,4 +37,6 @@ src
 ┃ ┣ ResultView.js
 ┃ ┣ WinnerView.js
 ┃ ┗ View.js
-┗ 📜index.js
+┗ index.js
+
+```
