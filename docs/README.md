@@ -1,3 +1,8 @@
+<p align="middle" >
+  <img width="200px;" src="https://github.com/woowacourse/javascript-racingcar-precourse/blob/main/images/racingcar_icon.png?raw=true"/>
+</p>
+<h1 align="middle">자동차 경주 게임 기능 목록</h1>
+
 ## 🎯 구현 기능 목록
 
 - [x] index.html에 id값 설정
@@ -13,3 +18,21 @@
 - [x] 레이싱이 끝나면 결과를 출력한다.
 - [x] 레이싱이 끝나면 최종 우승자를 찾는다.
 - [x] 최종 우승자를 <span id="racing-winners">에 담아서 출력한다.
+
+src
+┣ controllers
+┃ ┗ MainController.js
+┣ models
+┃ ┣ Car.js
+┃ ┗ CarsModel.js
+┣ utils
+┃ ┣ constants.js
+┃ ┣ dom.js
+┃ ┗ validation.js
+┣ views
+┃ ┣ CarNameFormView.js
+┃ ┣ RacingCountFormView.js
+┃ ┣ ResultView.js
+┃ ┣ WinnerView.js
+┃ ┗ View.js
+┗ 📜index.js
