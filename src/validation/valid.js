@@ -1,6 +1,6 @@
 import { $ } from '../utils/dom.js';
-import { ELEMENT, ALERT_MESSAGE } from '../constant/index.js';
-import { MAX_CAR_NAME_LENGTH } from '../constant/index.js';
+import { ELEMENT_ID, ALERT_MESSAGE } from '../constant/index.js';
+import { NUMBER_RULE } from '../constant/index.js';
 import { clearInput } from '../utils/dom.js';
 export const VALID = {
   checkValidRacingCount(racingCount) {
@@ -14,7 +14,7 @@ export const VALID = {
   checkCarsExist(cars) {
     if (!cars.length) {
       alert(ALERT_MESSAGE.CAR_NOT_EXIT);
-      $(ELEMENT.carNamesInputID).focus();
+      $(ELEMENT_ID.carNamesInputID).focus();
       return false;
     }
     return true;
@@ -22,7 +22,7 @@ export const VALID = {
   checkValidCarNames(carNamesArray) {
     if (!isValidCarNamesLength(carNamesArray)) {
       alert(ALERT_MESSAGE.WRONG_CAR_NAME_LENGTH);
-      clearInput(ELEMENT.carNamesInputID);
+      clearInput(ELEMENT_ID.carNamesInputID);
       return false;
     }
     return true;
@@ -30,4 +30,6 @@ export const VALID = {
 };
 const isPositiveNumber = (number) => number > 0;
 const isValidCarNamesLength = (carNamesArray) =>
-  carNamesArray.every((carName) => carName.length <= MAX_CAR_NAME_LENGTH);
+  carNamesArray.every(
+    (carName) => carName.length <= NUMBER_RULE.MAX_CAR_NAME_LENGTH,
+  );

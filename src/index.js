@@ -1,6 +1,6 @@
 import Car from './Car.js';
 import { $, getElementValue, formsPreventDefault } from './utils/dom.js';
-import { ELEMENT } from './constant/index.js';
+import { ELEMENT_ID } from './constant/index.js';
 import { VALID } from './validation/valid.js';
 import { raceAllCars, getRacingWinner } from './racing.js';
 import {
@@ -17,7 +17,9 @@ function RacingGame() {
   };
 
   const setCarNames = () => {
-    const carNamesArray = getElementValue(ELEMENT.carNamesInputID).split(',');
+    const carNamesArray = getElementValue(ELEMENT_ID.carNamesInputID).split(
+      ',',
+    );
     if (!VALID.checkValidCarNames(carNamesArray)) {
       return;
     }
@@ -28,7 +30,7 @@ function RacingGame() {
     if (!VALID.checkCarsExist(this.cars)) {
       return;
     }
-    const racingCount = getElementValue(ELEMENT.racingCountInputID);
+    const racingCount = getElementValue(ELEMENT_ID.racingCountInputID);
     if (!VALID.checkValidRacingCount(racingCount)) {
       return;
     }
@@ -46,16 +48,19 @@ function RacingGame() {
 
   const renderRacingResults = () => {
     const racingResultsElement = createRacingResultsElement(this.results);
-    $(ELEMENT.appID).appendChild(racingResultsElement);
+    $(ELEMENT_ID.appID).appendChild(racingResultsElement);
     const winners = getRacingWinner(this.cars);
     const racingWinnersElement = createRacingWinnersElement(winners);
-    $(ELEMENT.appID).appendChild(racingWinnersElement);
+    $(ELEMENT_ID.appID).appendChild(racingWinnersElement);
   };
 
   const initEventHandler = () => {
     formsPreventDefault();
-    $(ELEMENT.carNamesSubmitID).addEventListener('click', setCarNames);
-    $(ELEMENT.racingCountSubmitID).addEventListener('click', submitRacingCount);
+    $(ELEMENT_ID.carNamesSubmitID).addEventListener('click', setCarNames);
+    $(ELEMENT_ID.racingCountSubmitID).addEventListener(
+      'click',
+      submitRacingCount,
+    );
   };
 }
 const racingGame = new RacingGame();
